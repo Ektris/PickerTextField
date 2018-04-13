@@ -10,6 +10,7 @@
 		CA07A677207FFF5F000D1DE4 /* PickerTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA07A66D207FFF5E000D1DE4 /* PickerTextField.framework */; };
 		CA07A67C207FFF5F000D1DE4 /* PickerTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07A67B207FFF5F000D1DE4 /* PickerTextFieldTests.swift */; };
 		CA07A67E207FFF5F000D1DE4 /* PickerTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = CA07A670207FFF5E000D1DE4 /* PickerTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA07A688207FFFB8000D1DE4 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07A687207FFFB8000D1DE4 /* PickerTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		CA07A676207FFF5F000D1DE4 /* PickerTextFieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickerTextFieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA07A67B207FFF5F000D1DE4 /* PickerTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextFieldTests.swift; sourceTree = "<group>"; };
 		CA07A67D207FFF5F000D1DE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA07A687207FFFB8000D1DE4 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				CA07A670207FFF5E000D1DE4 /* PickerTextField.h */,
 				CA07A671207FFF5F000D1DE4 /* Info.plist */,
+				CA07A687207FFFB8000D1DE4 /* PickerTextField.swift */,
 			);
 			path = PickerTextField;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					CA07A66C207FFF5E000D1DE4 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 					CA07A675207FFF5F000D1DE4 = {
 						CreatedOnToolsVersion = 9.3;
@@ -194,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA07A688207FFFB8000D1DE4 /* PickerTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +344,7 @@
 		CA07A682207FFF5F000D1DE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -355,6 +361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rwc.PickerTextField;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -363,6 +370,7 @@
 		CA07A683207FFF5F000D1DE4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -387,6 +395,7 @@
 		CA07A685207FFF5F000D1DE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PickerTextFieldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -404,6 +413,7 @@
 		CA07A686207FFF5F000D1DE4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = PickerTextFieldTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
