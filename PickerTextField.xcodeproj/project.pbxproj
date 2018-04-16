@@ -11,6 +11,7 @@
 		CA07A67C207FFF5F000D1DE4 /* PickerTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07A67B207FFF5F000D1DE4 /* PickerTextFieldTests.swift */; };
 		CA07A67E207FFF5F000D1DE4 /* PickerTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = CA07A670207FFF5E000D1DE4 /* PickerTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA07A688207FFFB8000D1DE4 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07A687207FFFB8000D1DE4 /* PickerTextField.swift */; };
+		CAF5F9DA208154DF0007C1BE /* MultiPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5F9D9208154DF0007C1BE /* MultiPickerTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		CA07A67B207FFF5F000D1DE4 /* PickerTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextFieldTests.swift; sourceTree = "<group>"; };
 		CA07A67D207FFF5F000D1DE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA07A687207FFFB8000D1DE4 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
+		CAF5F9D9208154DF0007C1BE /* MultiPickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				CA07A670207FFF5E000D1DE4 /* PickerTextField.h */,
 				CA07A671207FFF5F000D1DE4 /* Info.plist */,
 				CA07A687207FFFB8000D1DE4 /* PickerTextField.swift */,
+				CAF5F9D9208154DF0007C1BE /* MultiPickerTextField.swift */,
 			);
 			path = PickerTextField;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA07A688207FFFB8000D1DE4 /* PickerTextField.swift in Sources */,
+				CAF5F9DA208154DF0007C1BE /* MultiPickerTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

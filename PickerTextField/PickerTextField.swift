@@ -11,9 +11,9 @@ import UIKit
 open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK: - Properties
     
-    fileprivate let picker = UIPickerView()
+    internal let picker = UIPickerView()
     
-    fileprivate var _data = [String]()
+    internal var _data = [String]()
     
     open var data: [String] {
         set (values) {
@@ -26,7 +26,7 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
         }
     }
     
-    open var selectedValue: String?
+    open internal(set) var selectedValue: String?
     
     // MARK: - Initializers
     
@@ -43,17 +43,17 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
     private func initPickerView() {
         self.delegate = self
         
-        self.picker.autoresizingMask = [.flexibleHeight]
-        self.picker.translatesAutoresizingMaskIntoConstraints = false
         self.picker.dataSource = self
         self.picker.delegate = self
+        self.picker.autoresizingMask = [.flexibleHeight]
+        self.picker.translatesAutoresizingMaskIntoConstraints = false
         self.picker.showsSelectionIndicator = true
         self.picker.isUserInteractionEnabled = true
     }
     
     // MARK: - Selection handlers
     
-    fileprivate func setSelection(_ row: Int) {
+    internal func setSelection(_ row: Int) {
         self.text = self._data[row]
         self.selectedValue = self._data[row]
     }
@@ -69,15 +69,20 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.inputView = self.picker
         
+        self.inputAccessoryView = createDismissBar()
+        
+        return true
+    }
+    
+    internal func createDismissBar() -> UIToolbar {
         let dismissBar = UIToolbar(frame: .zero)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissEditor))
         dismissBar.setItems([doneButton], animated: false)
         dismissBar.sizeToFit()
         dismissBar.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         dismissBar.translatesAutoresizingMaskIntoConstraints = false
-        self.inputAccessoryView = dismissBar
         
-        return true
+        return dismissBar
     }
     
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
