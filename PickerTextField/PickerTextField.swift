@@ -54,14 +54,18 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
     // MARK: - Selection handlers
     
     internal func setSelection(_ row: Int) {
-        self.text = self._data[row]
         self.selectedValue = self._data[row]
+        setText()
     }
     
     public func clearSelection() -> Bool {
         self.picker.selectRow(0, inComponent: 0, animated: false)
         pickerView(self.picker, didSelectRow: 0, inComponent: 0)
         return true
+    }
+    
+    internal func setText() {
+        self.text = self.selectedValue
     }
     
     // MARK: - UITextFieldDelegate

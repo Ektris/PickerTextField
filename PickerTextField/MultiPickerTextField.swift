@@ -96,7 +96,7 @@ open class MultiPickerTextField: PickerTextField, UITableViewDataSource, UITable
         return true
     }
     
-    fileprivate func setText() {
+    override internal func setText() {
         self.text = selectedValue
     }
     
