@@ -73,20 +73,9 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.inputView = self.picker
         
-        self.inputAccessoryView = createDismissBar()
+        addDismissBar()
         
         return true
-    }
-    
-    internal func createDismissBar() -> UIToolbar {
-        let dismissBar = UIToolbar(frame: .zero)
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissEditor))
-        dismissBar.setItems([doneButton], animated: false)
-        dismissBar.sizeToFit()
-        dismissBar.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        dismissBar.translatesAutoresizingMaskIntoConstraints = false
-        
-        return dismissBar
     }
     
     open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -95,10 +84,6 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
     
     open func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return clearSelection()
-    }
-    
-    @objc fileprivate func dismissEditor() {
-        self.resignFirstResponder()
     }
     
     // MARK: - UIPickerViewDataSource

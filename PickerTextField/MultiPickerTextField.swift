@@ -107,7 +107,7 @@ open class MultiPickerTextField: PickerTextField, UITableViewDataSource, UITable
         self.inputView = self.table
         self.inputView?.backgroundColor = .clear
 
-        self.inputAccessoryView = createDismissBar()
+        addDismissBar()
         
         return true
     }

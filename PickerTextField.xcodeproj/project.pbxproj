@@ -12,6 +12,7 @@
 		CA07A67E207FFF5F000D1DE4 /* PickerTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = CA07A670207FFF5E000D1DE4 /* PickerTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA07A688207FFFB8000D1DE4 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07A687207FFFB8000D1DE4 /* PickerTextField.swift */; };
 		CA288D902086404400C3870A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CA288D8F2086404400C3870A /* LICENSE */; };
+		CAE3A9322086586A00E548BE /* UITextField+DismissBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE3A9312086586A00E548BE /* UITextField+DismissBar.swift */; };
 		CAF5F9DA208154DF0007C1BE /* MultiPickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5F9D9208154DF0007C1BE /* MultiPickerTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		CA07A67D207FFF5F000D1DE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA07A687207FFFB8000D1DE4 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		CA288D8F2086404400C3870A /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		CAE3A9312086586A00E548BE /* UITextField+DismissBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+DismissBar.swift"; sourceTree = "<group>"; };
 		CAF5F9D9208154DF0007C1BE /* MultiPickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 				CA07A671207FFF5F000D1DE4 /* Info.plist */,
 				CA07A687207FFFB8000D1DE4 /* PickerTextField.swift */,
 				CAF5F9D9208154DF0007C1BE /* MultiPickerTextField.swift */,
+				CAE3A9312086586A00E548BE /* UITextField+DismissBar.swift */,
 			);
 			path = PickerTextField;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			files = (
 				CA07A688207FFFB8000D1DE4 /* PickerTextField.swift in Sources */,
 				CAF5F9DA208154DF0007C1BE /* MultiPickerTextField.swift in Sources */,
+				CAE3A9322086586A00E548BE /* UITextField+DismissBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
