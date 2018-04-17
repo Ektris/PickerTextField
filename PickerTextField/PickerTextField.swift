@@ -78,10 +78,6 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
         return true
     }
     
-    open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return textField.resignFirstResponder()
-    }
-    
     open func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return clearSelection()
     }
