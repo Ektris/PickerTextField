@@ -15,6 +15,8 @@ open class DatePickerTextField: UITextField, UITextFieldDelegate {
     
     let formatter = DateFormatter()
     
+    open internal(set) var selectedDate: Date?
+    
     // MARK: - Initializers
     
     override public init(frame: CGRect) {
@@ -41,6 +43,7 @@ open class DatePickerTextField: UITextField, UITextFieldDelegate {
     // MARK: - Selection Handlers
     
     @objc func dateChanged(_ picker: UIDatePicker) {
+        self.selectedDate = picker.date
         self.text = self.formatter.string(from: picker.date)
     }
     
@@ -60,6 +63,7 @@ open class DatePickerTextField: UITextField, UITextFieldDelegate {
     }
     
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.selectedDate = nil
         self.picker.setDate(Date(), animated: true)
         
         return true
