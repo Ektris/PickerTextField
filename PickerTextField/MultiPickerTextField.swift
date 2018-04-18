@@ -79,16 +79,37 @@ open class MultiPickerTextField: PickerTextField, UITableViewDataSource, UITable
     // MARK: - Selection Handlers
     
     override internal func setSelection(_ row: Int) {
-        self.selectedRows.append(row)
+        if !self.selectedRows.contains(row) {
+            self.selectedRows.append(row)
+        }
         setText()
     }
     
-    override public func clearSelection() -> Bool {
-        guard let selectedPaths = self.table.indexPathsForSelectedRows else {
-            return true
+    override open func setSelection(value: String) throws {
+        if self._data.contains(value) {
+            let indexPath = IndexPath(row: self._data.index(of: value)!, section: 0)
+            self.table.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            tableView(self.table, didSelectRowAt: indexPath)
+        } else {
+            throw PickerFieldError.invalidSelection
         }
+    }
+    
+    open func setSelections(values: [String]) throws {
+        _ = clearSelection()
         
-        for path in selectedPaths {
+        for value in values {
+            if self._data.contains(value) {
+                try! setSelection(value: value)
+            } else {
+                throw PickerFieldError.invalidSelection
+            }
+        }
+    }
+    
+    override open func clearSelection() -> Bool {
+        for row in self.selectedRows {
+            let path = IndexPath(row: row, section: 0)
             self.table.deselectRow(at: path, animated: true)
             tableView(self.table, didDeselectRowAt: path)
         }
@@ -102,8 +123,9 @@ open class MultiPickerTextField: PickerTextField, UITableViewDataSource, UITable
     
     // MARK: - UITextFieldDelegate
     
-    public override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    open override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.table.frame = self.picker.frame
+        self.table.reloadData()
         self.inputView = self.table
         self.inputView?.backgroundColor = .clear
 
@@ -131,8 +153,10 @@ open class MultiPickerTextField: PickerTextField, UITableViewDataSource, UITable
 
         if self.selectedRows.contains(row) {
             cell.accessoryType = .checkmark
+            cell.setSelected(true, animated: false)
         } else {
             cell.accessoryType = .none
+            cell.setSelected(false, animated: false)
         }
 
         return cell
@@ -142,6 +166,12 @@ open class MultiPickerTextField: PickerTextField, UITableViewDataSource, UITable
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+        if self.selectedRows.contains(indexPath.row) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.tableView(tableView, didDeselectRowAt: indexPath)
+            return
+        }
+        
         cell?.accessoryType = .checkmark
         
         setSelection(indexPath.row)

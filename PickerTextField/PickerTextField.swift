@@ -58,7 +58,16 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
         setText()
     }
     
-    public func clearSelection() -> Bool {
+    open func setSelection(value: String) throws {
+        if self._data.contains(value) {
+            self.picker.selectRow(self._data.index(of: value)!, inComponent: 0, animated: true)
+            pickerView(self.picker, didSelectRow: self._data.index(of: value)!, inComponent: 0)
+        } else {
+            throw PickerFieldError.invalidSelection
+        }
+    }
+    
+    open func clearSelection() -> Bool {
         self.picker.selectRow(0, inComponent: 0, animated: false)
         pickerView(self.picker, didSelectRow: 0, inComponent: 0)
         return true
@@ -70,7 +79,7 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
     
     // MARK: - UITextFieldDelegate
     
-    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.inputView = self.picker
         
         addDismissBar()
