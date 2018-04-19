@@ -47,6 +47,11 @@ open class DatePickerTextField: UITextField, UITextFieldDelegate {
         self.text = self.formatter.string(from: picker.date)
     }
     
+    open func setDate(_ date: Date) {
+        self.picker.setDate(date, animated: true)
+        dateChanged(self.picker)
+    }
+    
     // MARK: - UITextFieldDelegate
     
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
