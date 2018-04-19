@@ -23,11 +23,44 @@ class DatePickerTextFieldTests: XCTestCase {
         super.tearDown()
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testSetDate() {
+        let date = Date()
+        datePickerField.setDate(date)
+        
+        XCTAssertEqual(datePickerField.picker.date, date)
     }
     
+    func testGetSelectedDate() {
+        let date = Date()
+        
+        datePickerField.setDate(date)
+        
+        XCTAssertNotNil(datePickerField.selectedDate)
+        XCTAssertEqual(datePickerField.selectedDate, date)
+    }
+    
+    func testGetSelectedDateNone() {
+        let date = datePickerField.selectedDate
+        
+        XCTAssertNil(date)
+    }
+    
+    func testGetDateText() {
+        let date = Date()
+        
+        datePickerField.setDate(date)
+        let selected = datePickerField.selectedDate
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        let text = formatter.string(from: selected!)
+        
+        XCTAssertEqual(datePickerField.text, text)
+    }
+    
+    func testInputViewWhenEditing() {
+        _ = datePickerField.textFieldShouldBeginEditing(datePickerField)
+        
+        XCTAssertTrue(datePickerField.inputView is UIDatePicker)
+        XCTAssertTrue(datePickerField.inputAccessoryView is UIToolbar)
+    }
 }
