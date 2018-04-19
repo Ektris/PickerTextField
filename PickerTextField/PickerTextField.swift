@@ -54,7 +54,11 @@ open class PickerTextField: UITextField, UITextFieldDelegate, UIPickerViewDataSo
     // MARK: - Selection handlers
     
     internal func setSelection(_ row: Int) {
-        self.selectedValue = self._data[row]
+        if (row > 0) {
+            self.selectedValue = self._data[row]
+        } else {
+            self.selectedValue = nil
+        }
         setText()
     }
     
