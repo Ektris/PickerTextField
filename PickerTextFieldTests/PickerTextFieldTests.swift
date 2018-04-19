@@ -10,27 +10,64 @@ import XCTest
 @testable import PickerTextField
 
 class PickerTextFieldTests: XCTestCase {
+    var pickerField: PickerTextField!
+    let testData = ["Test1", "Test2", "Test3"]
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        pickerField = PickerTextField(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSetData() {
+        pickerField.data = testData
+        
+        XCTAssertNotNil(pickerField.data)
+        XCTAssertFalse(pickerField.data.isEmpty)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testSetSelection() {
+        pickerField.data = testData
+        
+        XCTAssertNoThrow(try pickerField.setSelection(value: "Test1"))
     }
     
+    func testSetBadSelection() {
+        XCTAssertThrowsError(try pickerField.setSelection(value: "BadTest"))
+    }
+    
+    func testGetSelectedValue() {
+        pickerField.data = testData
+        
+        try! pickerField.setSelection(value: "Test1")
+        
+        XCTAssertNotNil(pickerField.selectedValue)
+        XCTAssertEqual(pickerField.selectedValue, "Test1")
+    }
+    
+    func testGetSelectedValueNone() {
+        let value = pickerField.selectedValue
+        
+        XCTAssertNil(value)
+    }
+    
+    func testClearSelection() {
+        pickerField.data = testData
+        
+        try! pickerField.setSelection(value: "Test1")
+        
+        XCTAssertTrue(pickerField.clearSelection())
+        XCTAssertNil(pickerField.selectedValue)
+    }
+    
+    func testInputViewWhenEditing() {
+        _ = pickerField.textFieldShouldBeginEditing(pickerField)
+        
+        XCTAssertTrue(pickerField.inputView is UIPickerView)
+        XCTAssertTrue(pickerField.inputAccessoryView is UIToolbar)
+    }
 }
